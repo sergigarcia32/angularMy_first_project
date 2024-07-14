@@ -1,0 +1,91 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+  >
+    <mat-toolbar>Menú</mat-toolbar>
+    <mat-list>
+      <mat-divider></mat-divider>
+      <mat-list-item class="menu-item" routerLink="/dashboard/dashboard">
+        <div class="mat-list-item-content">
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Example home icon"
+            fontIcon="space_dashboard"
+          ></mat-icon
+          ><span class="menu-item-text">Dashboard</span>
+        </div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item class="menu-item" routerLink="/dashboard/users"
+        ><div class="mat-list-item-content">
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Example home icon"
+            fontIcon="people_alt"
+          ></mat-icon
+          ><span class="menu-item-text">Users</span>
+        </div></mat-list-item
+      >
+      <mat-divider></mat-divider>
+      <mat-list-item class="menu-item"
+        ><div class="mat-list-item-content">
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Example home icon"
+            fontIcon="category"
+          ></mat-icon
+          ><span class="menu-item-text">Category</span>
+        </div></mat-list-item
+      >
+      <mat-divider></mat-divider>
+    </mat-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>E-COMMERCE DASHBOARD</span>
+      <div class="button-logout">
+        <button [cdkMenuTriggerFor]="menu" class="example-standalone-trigger">
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Example home icon"
+            fontIcon="person_outline"
+          ></mat-icon
+          ><span class="item-text-login">SergiGar</span>
+        </button>
+
+        <ng-template #menu>
+          <div class="example-menu" cdkMenu>
+            <button class="example-menu-item" cdkMenuItem>Refresh</button>
+            <button class="example-menu-item" cdkMenuItem>Settings</button>
+            <button class="example-menu-item" cdkMenuItem>Help</button>
+            <button class="example-menu-item" cdkMenuItem>Sign out</button>
+          </div>
+        </ng-template>
+        <button
+          mat-icon-button
+          class="example-icon"
+          routerLink="/"
+          aria-label="Example icon-button with menu icon"
+        >
+          <mat-icon>logout</mat-icon>
+        </button>
+      </div>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

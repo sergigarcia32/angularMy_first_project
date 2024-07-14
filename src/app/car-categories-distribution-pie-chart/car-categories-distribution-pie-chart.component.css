@@ -1,0 +1,6 @@
+.chart-container-pie{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 50%;
+}
